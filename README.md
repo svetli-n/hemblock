@@ -44,13 +44,12 @@ Which will start a server at `http://localhost:8080`, proxying API requests to t
 
 Test GraphQL
 ```
-# send a query to the graphql canister
+dfx canister call graphql graphql_mutation '("mutation { createHousingUnit(input: { unitType: \"lägenhet\" rooms: 5 area: 135 floor: 5 buildYear: 1923 association: \"BRF Stinna\" }) { id } }", "{}")' 
+dfx canister call graphql graphql_mutation '("mutation { createHousingUnit(input: { unitType: \"lägenhet\" rooms: 4 area: 95 floor: 4 buildYear: 1923 association: \"BRF Stinna\" }) { id } }", "{}")' 
 
-dfx canister call graphql graphql_query '("query { readUser { id } }", "{}")'
-
-# send a mutation to the graphql canister
-
-dfx canister call graphql graphql_mutation '("mutation { createUser(input: { username: \"lastmjs\" }) { id } }", "{}")'
+dfx canister call graphql graphql_query '("query { readHousingUnit { id rooms } }", "{}")'
+dfx canister call graphql graphql_query '("query { readHousingUnit(search: { floor: { eq: 4 } }) { id rooms } }", "{}")'
+dfx canister call graphql graphql_query '("query { readHousingUnit(search: { buildYear: { lt: 1930 } }) { id rooms } }", "{}")'
 ```
 
 ### Note on frontend environment variables

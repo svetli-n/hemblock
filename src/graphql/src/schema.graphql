@@ -10,3 +10,18 @@ type BlogPost {
     title: String!
     author: User! @relation(name: "User:blogPosts::BlogPost:author")
 }
+
+enum PropertyType {
+    APARTMENT
+    VILLA
+}
+
+type HousingUnit {
+    id: ID!
+    unitType: String!
+    rooms: Int!
+    area: Int!
+    floor: Int!
+    buildYear: Int!
+    association: String!
+}
