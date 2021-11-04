@@ -1,8 +1,10 @@
 {
   "canisters": {
     "hemblock": {
-      "main": "src/hemblock/main.mo",
-      "type": "motoko"
+      "build": "cargo build --target wasm32-unknown-unknown --package hemblock --release",
+      "candid": "src/hemblock/hemblock.did",
+      "wasm": "target/wasm32-unknown-unknown/release/hemblock.wasm",
+      "type": "custom"
     },
     "hemblock_assets": {
       "dependencies": [
@@ -18,13 +20,6 @@
       "type": "assets"
     }
   },
-  "defaults": {
-    "build": {
-      "args": "",
-      "packtool": ""
-    }
-  },
-  "dfx": "0.8.3",
   "networks": {
     "local": {
       "bind": "127.0.0.1:8000",
