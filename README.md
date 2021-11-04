@@ -32,6 +32,17 @@ dfx start --background
 dfx deploy
 ```
 
+Test GraphQL
+```
+# send a query to the graphql canister
+
+dfx canister call graphql graphql_query '("query { readUser { id } }", "{}")'
+
+# send a mutation to the graphql canister
+
+dfx canister call graphql graphql_mutation '("mutation { createUser(input: { username: \"lastmjs\" }) { id } }", "{}")'
+```
+
 Once the job completes, your application will be available at `http://localhost:8000?canisterId={asset_canister_id}`.
 
 Additionally, if you are making frontend changes, you can start a development server with

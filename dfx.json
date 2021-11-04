@@ -6,6 +6,12 @@
       "wasm": "target/wasm32-unknown-unknown/release/hemblock.wasm",
       "type": "custom"
     },
+    "graphql": {
+      "type": "custom",
+      "build": "cargo build --target wasm32-unknown-unknown --package graphql --release",
+      "candid": "src/graphql/src/graphql.did",
+      "wasm": "target/wasm32-unknown-unknown/release/graphql.wasm"
+    },
     "hemblock_assets": {
       "dependencies": [
         "hemblock"
